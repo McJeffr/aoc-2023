@@ -54,28 +54,6 @@ fun String.findLast(strings: List<String>): String? {
 
 fun String.toDigit(): Int = numbersMap[this] ?: toInt()
 
-val numbersList = listOf(
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine"
-)
 val numbersMap = mapOf(
     "zero" to 0,
     "one" to 1,
@@ -88,3 +66,6 @@ val numbersMap = mapOf(
     "eight" to 8,
     "nine" to 9
 )
+val numbersList = numbersMap
+    .map { entry -> listOf(entry.key, entry.value.toString()) }
+    .flatten()
