@@ -8,7 +8,7 @@ fun main() {
     part2(input)
 }
 
-fun part1(input: List<String>) {
+private fun part1(input: List<String>) {
     val sum = input.sumOf { line ->
         val leftDigit = line.first { it.isDigit() }
         val rightDigit = line.last { it.isDigit() }
@@ -17,7 +17,7 @@ fun part1(input: List<String>) {
     println("The sum of the lines of text is '$sum'")
 }
 
-fun part2(input: List<String>) {
+private fun part2(input: List<String>) {
     val sum = input.sumOf { line ->
         val leftDigit = line.findFirst(numbersList)?.toDigit()
         val rightDigit = line.findLast(numbersList)?.toDigit()
@@ -26,7 +26,7 @@ fun part2(input: List<String>) {
     println("The sum of the lines of text is '$sum'")
 }
 
-fun String.findFirst(strings: List<String>): String? {
+private fun String.findFirst(strings: List<String>): String? {
     var index: Int = Int.MAX_VALUE
     var match: String? = null
     strings.forEach {
@@ -39,7 +39,7 @@ fun String.findFirst(strings: List<String>): String? {
     return match
 }
 
-fun String.findLast(strings: List<String>): String? {
+private fun String.findLast(strings: List<String>): String? {
     var index: Int = Int.MIN_VALUE
     var match: String? = null
     strings.forEach {
@@ -52,9 +52,9 @@ fun String.findLast(strings: List<String>): String? {
     return match
 }
 
-fun String.toDigit(): Int = numbersMap[this] ?: toInt()
+private fun String.toDigit(): Int = numbersMap[this] ?: toInt()
 
-val numbersMap = mapOf(
+private val numbersMap = mapOf(
     "zero" to 0,
     "one" to 1,
     "two" to 2,
@@ -66,6 +66,6 @@ val numbersMap = mapOf(
     "eight" to 8,
     "nine" to 9
 )
-val numbersList = numbersMap
+private val numbersList = numbersMap
     .map { entry -> listOf(entry.key, entry.value.toString()) }
     .flatten()
